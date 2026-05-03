@@ -1,0 +1,11 @@
+{
+  "name": "weather-dashboard-api",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test/app.test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
