@@ -10,7 +10,7 @@ pipeline {
         docker { image 'maven:3.9.9-eclipse-temurin-17' }
       }
       steps {
-        dir('workspace/project1-java') {
+        dir('/workspace/project1-java') {
           sh 'mvn -B clean package'
           sh 'java -ea -jar target/sample-java-1.0-SNAPSHOT.jar'
         }
@@ -22,7 +22,7 @@ pipeline {
         docker { image 'node:20-alpine' }
       }
       steps {
-        dir('workspace/project2-node') {
+        dir('/workspace/project2-node') {
           sh 'npm ci || npm install'
           sh 'npm test'
         }
@@ -34,7 +34,7 @@ pipeline {
         docker { image 'python:3.12-slim' }
       }
       steps {
-        dir('workspace/project3-python') {
+        dir('/workspace/project3-python') {
           sh 'python app.py'
           sh 'cp /tmp/weather_report.json weather_report.json'
           stash name: 'weather-report', includes: 'weather_report.json'
@@ -47,7 +47,7 @@ pipeline {
         docker { image 'python:3.12-slim' }
       }
       steps {
-        dir('workspace/project4-shell') {
+        dir('/workspace/project4-shell') {
           unstash 'weather-report'
           sh 'cp weather_report.json /tmp/weather_report.json'
           sh 'chmod +x script.sh'
